@@ -11,6 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 20px;
 }
 .search-img{
     height: 100%;
@@ -18,6 +19,7 @@
     position: absolute;
 }
 .content{
+    text-align: center;
     color: white;
     z-index: 2;
     position: relative;
@@ -121,4 +123,67 @@ input , button ,i{
 }
 .card:hover .details{
     bottom: 0;
+}
+.light-box{
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+}
+.light-box .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    transform: translate(-50%,-50%);
+}
+.container header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.container header i{
+    font-size: 1.4em;
+}
+.container .preview-img{
+    height: 65vh;
+    width: 85vw;
+}
+.preview-img{
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+}
+.preview-img img{
+    width: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+.photographer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.photographer a{
+    text-decoration: none;
+    color: black;
+}
+.photographer span:hover{
+    text-decoration: underline;
+}
+.import{
+    display: flex;
+    gap: 15px;
+}
+.import a{
+    color: black;
+}
+.photographer span{
+    color: #333;
+    text-transform: capitalize;
 }
