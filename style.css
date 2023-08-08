@@ -136,6 +136,9 @@ input , button ,i{
     background-color: rgba(0,0,0,0.7);
     display: none;
 }
+.light-box.show{
+    display: block;
+}
 .light-box .container{
     position: absolute;
     top: 50%;

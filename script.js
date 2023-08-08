@@ -1,10 +1,14 @@
-const apikey = "MGG0BRTnuEG2dngJWsT88XeecjH14QIGtSnJfYCl1wrfDVEzxVMuQNZH";
-const perPage = 15;
 const imageWrapper = document.querySelector(".images");
 const loadMore = document.querySelector(".load-more");
 const searchBox = document.querySelector(".search-box input");
+const lightBox = document.querySelector(".light-box");
+
+// api , pagination, and searchContents
+const apikey = "MGG0BRTnuEG2dngJWsT88XeecjH14QIGtSnJfYCl1wrfDVEzxVMuQNZH";
+const perPage = 15;
 let currentPage = 1;
 let searchContent = null;
+
 const downloadImage = (imgUrl) => {
     fetch(imgUrl).then(res => res.blob()).then(file => {
         const a = document.createElement("a");
@@ -13,22 +17,30 @@ const downloadImage = (imgUrl) => {
         a.click();
     }).catch(()=> alert("Failed to download image!"));
 }
+
+const showLightBox = (name,img) => {
+    lightBox.classList.add("show");
+    lightBox.querySelector("img").src = img;
+    lightBox.querySelector("span").innerHTML = name;
+}
+
 const generateHTML = (images) => {
     imageWrapper.innerHTML += images.map(img =>
-        `<li class="card">
-        <img src="${img.src.large2x}" alt="">
-        <div class="details">
-            <div class="photograph">
-                <i class="uil uil-camera"></i>
-                <span>${img.photographer}</span>
+        `<li class="card" onclick="showLightBox('${img.photographer}','${img.src.large2x}')">
+            <img src="${img.src.large2x}" alt="">
+            <div class="details">
+                <div class="photograph">
+                    <i class="uil uil-camera"></i>
+                    <span>${img.photographer}</span>
+                </div>
+                <button type="button" onclick="downloadImage('${img.src.large2x}')" class="import-btn">
+                <i class="uil uil-import"></i>
+                </button>
             </div>
-            <button type="button" onclick="downloadImage('${img.src.large2x}')" class="import-btn">
-            <i class="uil uil-import"></i>
-            </button>
-        </div>
-    </li>`
+        </li>`
     ).join("");
 }
+
 const getImages = (apiUrl) => {
     loadMore.innerHTML = "Loading...";
     loadMore.classList.add("disable");
@@ -40,6 +52,7 @@ const getImages = (apiUrl) => {
         loadMore.classList.remove("disable");
     }).catch(() => alert("Failded to load images!"))
 }
+
 const loadMoreImages = () => {
     currentPage++;
     let apiurl;
@@ -52,6 +65,7 @@ const loadMoreImages = () => {
     }
     getImages(apiurl);
 }   
+
 const loadSearchImages = (e) => {
     if(e.target.value == "") return searchContent = null;
     if(e.key === "Enter"){
@@ -62,6 +76,8 @@ const loadSearchImages = (e) => {
         getImages(apiurl);
     }
 }
+
 getImages(`https://api.pexels.com/v1/curated?page=${currentPage}&per_page=${perPage}`);
+
 loadMore.addEventListener("click", loadMoreImages);
 searchBox.addEventListener("keyup",loadSearchImages);
