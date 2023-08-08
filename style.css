@@ -86,6 +86,10 @@ input , button ,i{
     cursor: pointer;
     color: white;
 }
+.gallery .load-more.disable{
+    opacity: 0.6;
+    pointer-events: none;
+}
 .gallery .images .card{
     border-radius: 5px;
     overflow: hidden;
