@@ -24,6 +24,7 @@
     color: white;
     z-index: 2;
     position: relative;
+    max-width: 500px;
 }
 .content h2 span{
     font-family: 'Borel', cursive;
@@ -31,14 +32,16 @@
 .content h2{
     font-size: 2em;
     margin-bottom: 5px;
+    line-height: 40px;
 }
 .content p{
     margin-bottom: 20px;
     text-align: center;
-    font-size: 1.1em;
+    font-size: 0.8em;
 }
 .content .search-box{
     position: relative;
+    width: 100%;
 }
 input , button ,i{
     border-radius: 5px;
