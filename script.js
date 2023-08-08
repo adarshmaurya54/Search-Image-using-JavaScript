@@ -6,7 +6,12 @@ const searchBox = document.querySelector(".search-box input");
 let currentPage = 1;
 let searchContent = null;
 const downloadImage = (imgUrl) => {
-    console.log(imgUrl);
+    fetch(imgUrl).then(res => res.blob()).then(file => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(file);
+        a.download = new Date().getTime();
+        a.click();
+    }).catch(()=> alert("Failed to download image!"));
 }
 const generateHTML = (images) => {
     imageWrapper.innerHTML += images.map(img =>
@@ -17,7 +22,7 @@ const generateHTML = (images) => {
                 <i class="uil uil-camera"></i>
                 <span>${img.photographer}</span>
             </div>
-            <button type="button" onclick="downloadImage(${img.src.large2x})" class="import-btn">
+            <button type="button" onclick="downloadImage('${img.src.large2x}')" class="import-btn">
             <i class="uil uil-import"></i>
             </button>
         </div>
