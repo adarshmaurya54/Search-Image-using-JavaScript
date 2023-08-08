@@ -1,7 +1,4 @@
 @media screen and (max-width: 425px) {
-    .content h2 {
-        font-size: 1.5em;
-    }
     .content p {
         font-size: 0.9em;
     }
