@@ -27,7 +27,7 @@
     color: white;
     z-index: 2;
     position: relative;
-    max-width: 500px;
+    width: 70%;
 }
 .content h2 span{
     font-family: 'Borel', cursive;
@@ -206,4 +206,13 @@ input , button ,i{
 .photographer span{
     color: #333;
     text-transform: capitalize;
+}
+footer{
+    background-color: #6019a9;
+    text-align: center;
+    padding: 30px 0;
+    color: white;
+    font-size: 1.2em;
+    border-top-left-radius:  30px;
+    border-top-right-radius: 30px;
 }
