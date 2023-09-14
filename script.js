@@ -35,15 +35,15 @@ const hideLightBox = () => {
 
 const generateHTML = (images) => {
     imageWrapper.innerHTML += images.map(img =>
-        `<li class="card" onclick="showLightBox('${img.photographer}','${img.src.large2x}')">
-            <img src="${img.src.large2x}" alt="">
+        `<li class="card">
+            <img src="${img.src.large2x}" onclick="showLightBox('${img.photographer}','${img.src.large2x}')" alt="">
             <div class="details">
                 <div class="photograph">
                     <i class="uil uil-camera"></i>
                     <span>${img.photographer}</span>
                 </div>
                 <button type="button" onclick="downloadImage('${img.src.large2x}')" class="import-btn">
-                <i class="uil uil-import"></i>
+                    <i class="uil uil-import"></i>
                 </button>
             </div>
         </li>`
